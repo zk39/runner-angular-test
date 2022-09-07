@@ -1,0 +1,35 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <label for="search">Search : </label>
+    <input
+      #userInput
+      matInput
+      type="text"
+      [formControl]="searchForm"
+      [matAutocomplete]="autoGroup"
+    />
+    <mat-autocomplete #autoGroup="matAutocomplete">
+      <mat-option
+        (onSelectionChange)="onClick($event, temp.name)"
+        *ngFor="let temp of options | async"
+        [value]="temp.name"
+        >{{ temp.name }}</mat-option
+      >
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-card>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let save of savedTitles; let i = index"
+        (removed)="remove(save.name, i)"
+      >
+        {{ save.name }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+
+      <!-- <li *ngFor="let temp of tempTitles">{{temp.id}}+{{temp.name}}</li> -->
+    </mat-chip-list>
+  </mat-card>
+</form>

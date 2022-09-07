@@ -1,0 +1,20 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="97"
+    alt="Runner Logo"
+    src="assets/runner_logo.png"
+  />
+  <span>{{ pageTitle }}</span>
+    <div class="spacer"></div>
+</div>
+
+<div class="content" role="main">
+  <h1>
+    Welcome to {{ title }}
+  </h1>
+  <ul>
+    <li *ngFor="let step of requirements">{{step}}</li>
+  </ul>
+</div>
+<app-typehead-input></app-typehead-input>
